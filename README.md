@@ -1,4 +1,3 @@
-```markdown
 # Text Analysis Code README
 
 ## Overview
@@ -40,4 +39,3 @@ I prefer to run the code on Google Colab for better compatibility and ease of us
    - Save the content to text files in a folder named `blog_text`.
    - Analyze the text files to extract linguistic features.
    - Update the Excel file with the analysis results, creating a new Excel file named `final.xlsx`.
-```
