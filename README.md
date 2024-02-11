@@ -1,4 +1,4 @@
-# Text Analysis Code README
+# Text Analysis 
 
 ## Overview
 This Python code is designed to perform text analysis on blog posts retrieved from specified URLs. The analysis includes sentiment analysis, readability metrics, and other linguistic features. The main functionalities of the code include:
