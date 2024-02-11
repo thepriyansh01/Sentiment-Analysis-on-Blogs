@@ -15,9 +15,8 @@ from textstat import syllable_count
 from transformers import pipeline
 sentiment_analysis_pipeline = pipeline("sentiment-analysis")
 
-
+# Read the Excel file into a DataFrame
 df = pd.read_excel('/Output Data Structure.xlsx')
-
 
 def using_bs(url):
     # Send a GET request to the URL
@@ -41,7 +40,6 @@ def using_bs(url):
         print("Failed to retrieve the website content. Status code:", response.status_code,url)
         return None, None
 
-
 def process_df(df):
     # Create a folder named 'blog_text' if it doesn't exist
     output_folder = 'blog_text'
@@ -63,8 +61,6 @@ def process_df(df):
             with open(save_path, 'w', encoding='utf-8') as f:
                 f.write(f"{title}\n\n")
                 f.write(f"\n{main_content}")
-
-
 
 def analyze_text(text):
     max_tokens = sentiment_analysis_pipeline.tokenizer.model_max_length
@@ -130,8 +126,14 @@ def analyze_text_files(folder_path, dataFrame):
                 url = "https://insights.blackcoffer.com/" + os.path.splitext(file_name)[0] + "/"
                 dataFrame.loc[df['URL'] == url, key] = value
 
-
+# Process the DataFrame to save blog contents to text files
 process_df(df)
+
+# Create a new DataFrame to store analysis results
 newDF = df
+
+# Analyze the text files and update the DataFrame with the analysis results
 analyze_text_files('/content/blog_text', newDF)
+
+# Save the final DataFrame to an Excel file
 newDF.to_excel('final.xlsx', index=False)
